@@ -109,7 +109,7 @@ export class RegisterPage implements OnInit {
     toast.present();
   }
 
-  emailCheck() {
+  async emailCheck() {
     this.submitted = true;
 
     const userEmail = {
