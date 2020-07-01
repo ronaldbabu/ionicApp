@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-label position="fixed" color="success"><h1>Hi there!</h1></ion-label>
+    <form [formGroup]="loginForm"  class="needs-validation" (ngSubmit)="onSubmit()">
+<ion-item>
+  <ion-input type="email" formControlName="emailId" class="form-control" placeholder="Email" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['emailId'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['emailId'].errors.required">*Email is required</div>
+    <div *ngIf="isFieldValid['emailId'].errors.email">*Please enter valid Email</div>
+    </div>
+</ion-item>
+<ion-item>
+  <ion-input type="password" formControlName="password" class="form-control" placeholder="Password" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['password'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['password'].errors.required">*Password is required</div>
+    </div>
+</ion-item>
+<br>
+<br>
+<ion-button color="success" class="loginButton" type="submit">Login</ion-button> 
+</form>
+<br>
+<ion-button color="primary" class="registerButton" (click)="goToRegister()">New user? Register</ion-button>
+
+  </div>
+</ion-content>

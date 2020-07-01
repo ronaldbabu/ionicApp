@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CommonServiceService } from '../common-service.service';
+import { AuthenticationService } from 'src/app/authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  userData: any;
+  constructor(
+    private commonservice: CommonServiceService,
+    private authenticationService: AuthenticationService) {
+      this.commonservice.userVal.subscribe(val => this.userData = val);
+     }
 
-  constructor() {}
-
+     logOut(){
+      this.authenticationService.logout();
+     }
 }

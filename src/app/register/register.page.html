@@ -1,0 +1,46 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-label position="fixed" color="success"><h1>New User Registration</h1></ion-label>
+    <form [formGroup]="registerForm"  class="needs-validation" (ngSubmit)="emailCheck()">
+<ion-item>
+  <ion-input type="email" formControlName="emailId" class="form-control" placeholder="Email" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['emailId'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['emailId'].errors.required">*Email is required</div>
+    <div *ngIf="isFieldValid['emailId'].errors.email">*Please enter valid Email</div>
+    </div>
+</ion-item>
+<ion-item>
+  <ion-input type="text" formControlName="userName" class="form-control" placeholder="Username" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['userName'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['userName'].errors.required">*Username is required</div>
+    </div>
+</ion-item>
+<ion-item>
+  <ion-input type="number" formControlName="phone" class="form-control" placeholder="Phone" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['phone'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['phone'].errors.required">*Phone is required</div>
+    </div>
+</ion-item>
+<ion-item>
+  <ion-input type="password" formControlName="password" class="form-control" placeholder="Password" required></ion-input> 
+    <div *ngIf="submitted && isFieldValid['password'].errors" class="invalid-feedback">
+      <div *ngIf="isFieldValid['password'].errors.required">*Password is required</div>
+      <div *ngIf="isFieldValid['password'].errors.minlength">*Password must have 8 characters</div>
+      <div *ngIf="isFieldValid['password'].errors.pattern">*Password must have a special character</div>
+  </div>
+</ion-item>
+<ion-item>
+  <ion-input type="password" formControlName="passwordConfirm" class="form-control" placeholder="Confirm Password" required></ion-input>
+  <div *ngIf="submitted && isFieldValid['passwordConfirm'].errors" class="invalid-feedback">
+    <div *ngIf="isFieldValid['passwordConfirm'].errors.required">*Password is required</div>
+    </div>
+</ion-item>
+<br>
+<br>
+<ion-button color="success" class="registerButton" type="submit">Register</ion-button> 
+</form>
+<br>
+<ion-button color="primary" class="loginButton" (click)="goToLogin()">Already a user? Login</ion-button>
+
+  </div>
+</ion-content>
